@@ -3,118 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Capture Tap</title>
+    <title>Capture Tap - Lightning-Fast Action Game</title>
+    <meta name="description" content="Master perfect timing in this addictive action game. Fast-moving fireballs, spectacular visual effects, and 100 explosive levels await!">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
         }
+
+        /* Animated Bubbles Background */
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float linear infinite;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+        }
+
+        .bubble:nth-child(1) { width: 60px; height: 60px; left: 10%; animation-duration: 12s; animation-delay: 0s; }
+        .bubble:nth-child(2) { width: 80px; height: 80px; left: 20%; animation-duration: 15s; animation-delay: 2s; }
+        .bubble:nth-child(3) { width: 40px; height: 40px; left: 35%; animation-duration: 10s; animation-delay: 4s; }
+        .bubble:nth-child(4) { width: 100px; height: 100px; left: 50%; animation-duration: 18s; animation-delay: 6s; }
+        .bubble:nth-child(5) { width: 70px; height: 70px; left: 65%; animation-duration: 13s; animation-delay: 8s; }
+        .bubble:nth-child(6) { width: 50px; height: 50px; left: 80%; animation-duration: 11s; animation-delay: 10s; }
+        .bubble:nth-child(7) { width: 90px; height: 90px; left: 90%; animation-duration: 16s; animation-delay: 12s; }
+        .bubble:nth-child(8) { width: 35px; height: 35px; left: 5%; animation-duration: 9s; animation-delay: 14s; }
+        .bubble:nth-child(9) { width: 75px; height: 75px; left: 25%; animation-duration: 14s; animation-delay: 16s; }
+        .bubble:nth-child(10) { width: 45px; height: 45px; left: 75%; animation-duration: 8s; animation-delay: 18s; }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Main Content */
         .container {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
         }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
+
+        /* Header */
+        header {
+            padding: 2rem 0 4rem;
+            text-align: center;
         }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
+
+        .game-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255,255,255,0.3);
         }
-        .highlight {
-            background-color: #e8f4f8;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
         }
-        .contact {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 30px;
+
+        .app-store-btn {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .app-store-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Game Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .feature-desc {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Game Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 4rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .game-title {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .stats {
+                gap: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Subtle pulse animation for call-to-action */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 8px 32px rgba(255,255,255,0.1);
+            }
+            50% {
+                box-shadow: 0 8px 32px rgba(255,255,255,0.3);
+            }
+            100% {
+                box-shadow: 0 8px 32px rgba(255,255,255,0.1);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Privacy Policy for Capture Tap</h1>
-        <p><strong>Last updated:</strong> July 1, 2025</p>
-
-        <div class="highlight">
-            <p><strong>Quick Summary:</strong> Capture Tap is a simple action game that uses ads to stay free. We collect minimal data and respect your privacy.</p>
-        </div>
-
-        <h2>1. Information We Collect</h2>
-        <p><strong>Game Data:</strong></p>
-        <ul>
-            <li>Game progress and high scores (stored locally on your device)</li>
-            <li>Game settings and preferences</li>
-            <li>Level completion and star ratings</li>
-        </ul>
-
-        <p><strong>Advertising Data:</strong></p>
-        <ul>
-            <li>Device advertising identifier (for personalized ads)</li>
-            <li>General location (country/region level)</li>
-            <li>Device type and operating system version</li>
-            <li>App usage patterns for ad frequency</li>
-        </ul>
-
-        <h2>2. How We Use Your Information</h2>
-        <ul>
-            <li><strong>Game Experience:</strong> Save your progress and provide personalized gameplay</li>
-            <li><strong>Advertising:</strong> Show relevant ads to keep the game free</li>
-            <li><strong>App Improvement:</strong> Understand how players use the game</li>
-        </ul>
-
-        <h2>3. Advertising and Third Parties</h2>
-        <p>Capture Tap uses <strong>Google AdMob</strong> to display advertisements. AdMob may collect and use data to provide personalized ads. You can learn more about Google's privacy practices at:</p>
-        <ul>
-            <li><a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
-            <li><a href="https://support.google.com/admob/answer/6128543">AdMob Data Usage</a></li>
-        </ul>
-
-        <h2>4. Your Choices and Controls</h2>
-        <ul>
-            <li><strong>Ad Tracking:</strong> You can limit ad tracking in your iOS Settings > Privacy & Security > Tracking</li>
-            <li><strong>Personalized Ads:</strong> Disable in iOS Settings > Privacy & Security > Apple Advertising</li>
-            <li><strong>Remove Ads:</strong> Purchase the ad-free version within the app</li>
-            <li><strong>Reset Data:</strong> Delete and reinstall the app to clear all local data</li>
-        </ul>
-
-        <h2>5. Data Security</h2>
-        <p>Your game data is stored locally on your device. We do not collect or store personal information on our servers. Ad-related data is handled securely by Google AdMob according to their privacy standards.</p>
-
-        <h2>6. Children's Privacy</h2>
-        <p>Capture Tap is suitable for all ages. We do not knowingly collect personal information from children under 13. The game only collects anonymous usage data for advertising purposes.</p>
-
-        <h2>7. Changes to This Policy</h2>
-        <p>We may update this privacy policy as needed. Any changes will be posted on this page with an updated date.</p>
-
-        <h2>8. Data Retention</h2>
-        <p>Game progress data is retained until you delete the app. Advertising data is managed by Google AdMob according to their retention policies.</p>
-
-        <div class="contact">
-            <h2>9. Contact Us</h2>
-            <p>If you have questions about this privacy policy or your data, contact us at:</p>
-            <p><strong>Email:</strong> capturetap@familycrewco.com</p>
-            <p><strong>App:</strong> Capture Tap for iOS</p>
-            <p><strong>Developer:</strong> Family Crew & Co.</p>
-        </div>
-
-        <hr style="margin: 40px 0; border: none; border-top: 1px solid #ddd;">
-        <p style="text-align: center; color: #666; font-size: 14px;">
-            This privacy policy was created for Capture Tap iOS game.<br>
-            Effective as of July 1, 2025
-        </p>
+    <!-- Animated Bubbles Background -->
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
     </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1 class="game-title">🎯 Capture Tap</h1>
+            <p class="tagline">Lightning-Fast Reflexes Meet Explosive Action!</p>
+            <a href="appstorelinkurlhere" class="app-store-btn pulse">📱 Download on App Store</a>
+        </header>
+
+        <!-- Game Features -->
+        <section class="features">
+            <div class="feature-card">
+                <span class="feature-icon">⚡</span>
+                <h3 class="feature-title">Quick Action Gaming</h3>
+                <p class="feature-desc">Fast-moving fireballs, perfect timing, instant gameplay. Jump in and play immediately!</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">🎆</span>
+                <h3 class="feature-title">Perfect Streak Rewards</h3>
+                <p class="feature-desc">Chain 3 consecutive perfect hits for spectacular fireworks celebrations and visual effects.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">🚀</span>
+                <h3 class="feature-title">100 Explosive Levels</h3>
+                <p class="feature-desc">Each level faster and more challenging than the last. Earn stars and master them all!</p>
+            </div>
+        </section>
+
+        <!-- Game Stats -->
+        <section class="stats">
+            <div class="stat">
+                <div class="stat-number">100</div>
+                <div class="stat-label">Explosive Levels</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">⭐⭐⭐</div>
+                <div class="stat-label">Star Ratings</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Replay Value</div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section style="text-align: center; margin: 4rem 0;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.9;">Ready for Lightning-Fast Action?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.7;">Perfect timing creates perfect scores. How many streaks can you chain?</p>
+            <a href="appstorelinkurlhere" class="app-store-btn pulse">🎮 Start Playing Now</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="#contact">Support</a>
+            </div>
+            <p style="opacity: 0.5;">© 2025 Capture Tap. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scroll behavior for any internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add subtle parallax effect to bubbles on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const bubbles = document.querySelectorAll('.bubble');
+            
+            bubbles.forEach((bubble, index) => {
+                const speed = 0.2 + (index * 0.1);
+                bubble.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
