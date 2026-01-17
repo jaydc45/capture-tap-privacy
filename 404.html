@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Google tag (gtag.js) -->
+                <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0BX79MWGJ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -12,60 +12,122 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | CaptureTap</title>
+    <title>404 - Page Not Found | CaptureTap</title>
     <style>
+        :root {
+            --primary: #2563eb;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg: #f8fafc;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f9fafb;
-            color: #1f2937;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            margin: 0;
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
+        }
+
+        /* Elegant Card Container */
+        .card {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
             text-align: center;
+            max-width: 440px;
+            width: 90%;
+            border: 1px solid rgba(226, 232, 240, 0.8);
         }
-        .container {
-            max-width: 500px;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 8rem;
-            margin: 0;
-            color: #3b82f6; /* A clean blue primary color */
-            line-height: 1;
-        }
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        p {
-            color: #6b7280;
+
+        .brand-logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.025em;
+            color: var(--primary);
             margin-bottom: 2rem;
-            line-height: 1.5;
-        }
-        .btn {
+            display: inline-block;
             text-decoration: none;
-            background-color: #3b82f6;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: background-color 0.2s;
         }
+
+        .error-num {
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.025em;
+        }
+
+        p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+        }
+
         .btn:hover {
-            background-color: #2563eb;
+            background-color: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        /* Ownership Footer */
+        footer {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .footer-link:hover {
+            border-color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>404</h1>
-        <h2>Oops! Page not found.</h2>
-        <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
-        <a href="https://capturetap.app" class="btn">Return to Home</a>
+    <div class="card">
+        <a href="https://capturetap.app" class="brand-logo">CaptureTap</a>
+        
+        <div class="error-num">Error 404</div>
+        <h1>Lost in the flow?</h1>
+        <p>The page you're looking for doesn't exist or has been moved. Let's get you back to what matters.</p>
+        
+        <a href="https://capturetap.app" class="btn">Back to Dashboard</a>
     </div>
+
+    <footer>
+        &copy; 2026 <a href="https://capturetap.app" class="footer-link">CaptureTap.app</a>. All rights reserved.
+    </footer>
 
 </body>
 </html>
